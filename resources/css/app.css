@@ -1,0 +1,165 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ── Neubrutalism Button Press Effects ── */
+.btn-neubrutalism {
+    position: relative;
+    border: 4px solid #000;
+    font-weight: 900;
+    cursor: pointer;
+    transition: all 0.08s ease;
+    box-shadow: 4px 4px 0px 0px #000;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn-neubrutalism:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #000;
+}
+.btn-neubrutalism:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+.btn-neubrutalism-lg {
+    box-shadow: 6px 6px 0px 0px #000;
+}
+.btn-neubrutalism-lg:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0px 0px #000;
+}
+.btn-neubrutalism-lg:active {
+    transform: translate(6px, 6px);
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+.btn-neubrutalism-sm {
+    box-shadow: 3px 3px 0px 0px #000;
+}
+.btn-neubrutalism-sm:hover {
+    transform: translate(1.5px, 1.5px);
+    box-shadow: 1.5px 1.5px 0px 0px #000;
+}
+.btn-neubrutalism-sm:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px 0px 0px #000;
+}
+
+/* Disabled state */
+.btn-neubrutalism:disabled,
+.btn-neubrutalism-lg:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Dark Mode */
+.dark {
+    color-scheme: dark;
+}
+
+.dark body {
+    background-color: #1a1a1a;
+}
+
+.dark header {
+    background-color: #2a2a2a;
+    border-color: #000;
+}
+
+.dark .bg-white {
+    background-color: #2a2a2a;
+}
+
+.dark .bg-\[\#FFF8E8\] {
+    background-color: #1a1a1a;
+}
+
+.dark .text-black {
+    color: #e5e5e5;
+}
+
+.dark .text-black\/70 {
+    color: rgba(229, 229, 229, 0.7);
+}
+
+.dark .text-black\/60 {
+    color: rgba(229, 229, 229, 0.6);
+}
+
+.dark .text-black\/50 {
+    color: rgba(229, 229, 229, 0.5);
+}
+
+.dark .text-black\/40 {
+    color: rgba(229, 229, 229, 0.4);
+}
+
+.dark .text-black\/30 {
+    color: rgba(229, 229, 229, 0.3);
+}
+
+.dark .border-black {
+    border-color: #000;
+}
+
+.dark .divide-black > * {
+    border-color: #000;
+}
+
+.dark .hover\:bg-\[\#FFF8E8\]:hover {
+    background-color: #333;
+}
+
+.dark .bg-black {
+    background-color: #000;
+}
+
+.dark .text-\[\#FFF8E8\] {
+    color: #FFF8E8;
+}
+
+.dark .shadow-\[8px_8px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+    box-shadow: 8px 8px 0px 0px #000;
+}
+
+.dark .shadow-\[12px_12px_0px_0px_rgba\(0\,0\,0\,1\)\] {
+    box-shadow: 12px 12px 0px 0px #000;
+}
+
+.dark .hover\:bg-\[\#FFD93D\]:hover {
+    background-color: #b89a00;
+}
+
+.dark .hover\:bg-\[\#6BCB77\]:hover {
+    background-color: #3a8a44;
+}
+
+.dark .hover\:bg-\[\#FF6B6B\]:hover {
+    background-color: #b33a3a;
+}
+
+.dark input, .dark select {
+    background-color: #333;
+    color: #e5e5e5;
+    border-color: #000;
+}
+
+.dark input::placeholder {
+    color: rgba(229, 229, 229, 0.4);
+}
+
+.dark .fixed.inset-0.bg-black\/50 {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Tabular numbers for timer */
+.tabular-nums {
+    font-variant-numeric: tabular-nums;
+}
