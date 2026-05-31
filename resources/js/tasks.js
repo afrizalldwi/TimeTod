@@ -19,13 +19,13 @@ window.toggleTask = async function (taskId) {
 };
 
 // Edit task modal
-window.editTask = function (id, title, priority, dueDate) {
+window.editTask = function (button) {
     const modal = document.getElementById('editModal');
     const form = document.getElementById('editForm');
-    document.getElementById('editTitle').value = title;
-    document.getElementById('editPriority').value = priority;
-    document.getElementById('editDueDate').value = dueDate;
-    form.action = `/tasks/${id}`;
+    document.getElementById('editTitle').value = button.dataset.title;
+    document.getElementById('editPriority').value = button.dataset.priority;
+    document.getElementById('editDueDate').value = button.dataset.dueDate || '';
+    form.action = `/tasks/${button.dataset.id}`;
     modal.classList.remove('hidden');
 };
 

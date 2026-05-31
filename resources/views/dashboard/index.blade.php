@@ -100,7 +100,7 @@
                         <p class="text-xs font-bold uppercase text-black/60">Sessions</p>
                     </div>
                     <div class="text-center p-3 border-4 border-black bg-[#FFF8E8]">
-                        <p class="text-2xl font-black" id="focusTimeDisplay">{{ gmdate('H:i', $stats['total_focus_time_today']) }}</p>
+                        <p class="text-2xl font-black" id="focusTimeDisplay">{{ sprintf('%02d:%02d', floor($stats['total_focus_time_today'] / 60), $stats['total_focus_time_today'] % 60) }}</p>
                         <p class="text-xs font-bold uppercase text-black/60">Focus Time</p>
                     </div>
                 </div>
@@ -194,7 +194,11 @@
                             {{-- Actions --}}
                             <div class="flex items-center gap-2 flex-shrink-0">
                                 <button type="button"
-                                    onclick="editTask({{ $task->id }}, '{{ addslashes($task->title) }}', '{{ $task->priority }}', '{{ $task->due_date?->format('Y-m-d') ?? '' }}')"
+                                    onclick="editTask(this)"
+                                    data-id="{{ $task->id }}"
+                                    data-title="{{ $task->title }}"
+                                    data-priority="{{ $task->priority }}"
+                                    data-due-date="{{ $task->due_date?->format('Y-m-d') ?? '' }}"
                                     class="btn-neubrutalism px-3 py-2 font-bold text-xs uppercase bg-white hover:bg-[#FFD93D]">
                                     ✏️
                                 </button>

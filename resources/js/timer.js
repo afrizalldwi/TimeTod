@@ -137,8 +137,9 @@ async function completeSession() {
                 const todayRes = await fetch('/timer/today');
                 if (todayRes.ok) {
                     const todayData = await todayRes.json();
-                    const hours = Math.floor(todayData.total_focus_time / 3600);
-                    const mins = Math.floor((todayData.total_focus_time % 3600) / 60);
+                    const totalMin = Math.floor(todayData.total_focus_time / 60);
+                    const hours = Math.floor(totalMin / 60);
+                    const mins = totalMin % 60;
                     focusTimeDisplay.textContent =
                         `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
                 }

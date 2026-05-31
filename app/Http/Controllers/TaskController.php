@@ -27,12 +27,20 @@ class TaskController extends Controller
 
     public function toggle(Task $task): JsonResponse
     {
+        $wasCompleted = $task->completed;
+
         $task->update([
-            'completed' => !$task->completed,
-            'completed_at' => $task->completed ? null : now(),
+            'completed' => !$wasCompleted,
+            'completed_at' => $wasCompleted ? null : now(),
         ]);
 
-        DailyStat::getTodayStats()->increment('completed_tasks');
+        $dailyStat = DailyStat::getTodayStats();
+
+        if ($wasCompleted) {
+            $dailyStat->decrement('completed_tasks');
+        } else {
+            $dailyStat->increment('completed_tasks');
+        }
 
         return response()->json(['completed' => $task->completed]);
     }
@@ -52,6 +60,14 @@ class TaskController extends Controller
 
     public function destroy(Task $task): RedirectResponse
     {
+        $dailyStat = DailyStat::getTodayStats();
+
+        if ($task->completed) {
+            $dailyStat->decrement('completed_tasks');
+        }
+
+        $dailyStat->decrement('total_tasks');
+
         $task->delete();
 
         return redirect()->route('dashboard');
